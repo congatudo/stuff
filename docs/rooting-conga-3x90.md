@@ -24,8 +24,10 @@ You should see something like this:
 
 ![Tina-Linux](tina-linux.png)
 
-## Things you can do now
-* Change the password (to something non-default and secure)
+
+## Things that you can do now
+
+* Change the password (to something non-default and secure 🙏)
 * Add certificates to access via ssh without passwords
-* Sniff network traffic
+* Sniff network traffic inside the Conga itself
 * Investigate all **the stuff** ... 😍
