@@ -46,3 +46,4 @@ Read 3 logs files with tail in our computer
 
 `tail -F cecotec4010.log cecotec4030.log cecotec4050.log`
 
+![tail example](network-capture.png)
