@@ -9,7 +9,7 @@ Capture and analyze packets from vacuum to Cecotec cloud
 - [tcpproxy.py](https://github.com/ickerwx/tcpproxy) - An intercepting proxy for TCP data
 - [tcpproxy.py personalized proxy module for Cecotec](https://gitlab.com/freeconga/stuff/-/tree/master/other)
 - [protobuf-inspector](https://github.com/mildsunrise/protobuf-inspector/)
-- [cloudBoot.sh](https://gitlab.com/freeconga/stuff/-/tree/master/other)
+- [start-cloud-services.sh](https://gitlab.com/freeconga/stuff/-/tree/master/other)
 
 ## Procedure
 
@@ -38,7 +38,7 @@ root@TinaLinux:~# kill -9 `pidof everest-server`
 root@TinaLinux:~# kill -9 `pidof log-server`
 ``` 
 
-6. Copy and execute cloudBoot.sh in vacuum
+6. Copy and execute start-cloud-services.sh in vacuum
 
 ## Finally
 
