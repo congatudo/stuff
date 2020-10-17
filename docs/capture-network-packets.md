@@ -27,7 +27,7 @@ Capture and analyze packets from vacuum to Cecotec cloud
 
 `./tcpproxy.py -im CecotecIn -om CecotecOut -lp 4050 -li _yourComputerIP_ -tp 4050 -ti _CECOTECIP_ >> cecotec4050.log`
 
-5. Stop the vacuum executables (Monitor, everest-server, AuxCtrl, RobotApp, log-server), you can upload shutdown.sh script to your vacuum
+5. Stop the vacuum executables (Monitor, everest-server, AuxCtrl, RobotApp, log-server), you can upload stop-vacuum-services.sh script to your vacuum
 
 ```
 root@TinaLinux:~# /etc/init.d/robotManager stop
