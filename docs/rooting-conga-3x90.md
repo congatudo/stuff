@@ -31,7 +31,7 @@ A Conga 3x90 model (of course!) and
 	PC:~ armando$ adb shell
 	```
 
-	if you get a login prompt, type <code>root</code> and then the password <code>@3I#sc$RD%xm^2S&</code>
+	if you get a login prompt, type <code>root</code> and then the password <code>@3I#sc$RD%xm^2S&</code>[^1]
 
 	if you already [patched your Conga](adb-without-password.md) before, no login or password is required
 
@@ -57,10 +57,13 @@ You should see something like this:
 
 ![Tina-Linux](tina-linux.png)
 
-
 ## Things that you can do now
 
 * Change the password (to something non-default and secure 🙏)
 * Add certificates to access via ssh without passwords
 * Sniff network traffic inside the Conga itself
 * Investigate all **the stuff** ... 😍
+
+
+## Notes:
+[^1]: Original password hash &rarr; <code>$1$trVg0hig$L.xDOM91z4d/.8FZRnr.h1</code> == <code>@3I#sc$RD%xm^2S&</code>
