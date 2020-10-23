@@ -14,14 +14,17 @@ For the  **Cecotec Conga models 3290, 3390, 3490, 3590, 3690 & 3790** it's possi
 
 Edit a new **adb_shell** script file with the following contents:
 
-	#!/bin/sh
-	export ENV='/etc/adb_profile'
-	exec /bin/sh "$@"
-
+```bash
+#!/bin/sh
+export ENV='/etc/adb_profile'
+exec /bin/sh "$@"
+```
 
 and change its attributes to be <code>rwxrw-rw-</code>:
 
-	chmod 755 adb_shell
+```bash
+PC:~ armando$ chmod 755 adb_shell
+```
 
 ### 2. Change the old shell by the new one
 Connect your Conga to your PC using the micro-usb conector in the front (the one bellow the rubber-tap):
@@ -31,14 +34,17 @@ Connect your Conga to your PC using the micro-usb conector in the front (the one
 
 and execute the following commands:
 
-	adb pull /bin/adb_shell adb_shell.original # create a backup of the original file
-	adb push -a adb_shell /bin/adb_shell
-
+```bash
+PC:~ armando$ adb pull /bin/adb_shell adb_shell.original # create a backup of the original file
+PC:~ armando$ adb push -a adb_shell /bin/adb_shell
+```
 
 ### 3. Check your passwordless access
 If everything was ok, you can now execute the following command
 
-	adb shell
+```bash
+PC:~ armando$ adb shell
+```
 
 and you'll get a root-console session directly (without typing any password)
 

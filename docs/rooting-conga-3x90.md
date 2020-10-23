@@ -27,7 +27,9 @@ A Conga 3x90 model (of course!) and
 
 3. Open a terminal or console and execute the following command:
 
-	> adb shell
+	```bash
+	PC:~ armando$ adb shell
+	```
 
 	if you get a login prompt, type <code>root</code> and then the password <code>@3I#sc$RD%xm^2S&</code>
 
@@ -43,7 +45,9 @@ A Conga 3x90 model (of course!) and
 3. You have to find out the IP address of your Conga (see [this guide](https://techwiser.com/find-ip-address-of-any-device/) on how to)
 
 4. Open an ssh connection to your Conga (change the 192.168.x.x for your Conga's IP address):
-	> ssh root@192.168.x.x
+	```bash
+	PC:~ armando$ ssh root@192.168.x.x
+	```
 
 	and when you get the login prompt, type <code>root</code> and then the password <code>@3I#sc$RD%xm^2S&</code>
 
