@@ -21,14 +21,16 @@ AllWinnerTech A33/R16-J Armv7 CPU
 * [Official info](http://linux-sunxi.org/R16)
 
 ### NAND Flash
-MX30LF2G18AC chip
+Macronix MX30LF2G18AC chip
 ![MX30LF2G18AC](MX30LF2G18AC.jpg)
 * [Datasheet](MX30LF2G18AC_3V_2Gb_v1.4.pdf)
+* [Official site](https://www.macronix.com/en-us/products/NAND-Flash/SLC-NAND-Flash/Pages/spec.aspx?p=MX30LF2G18AC&m=SLC+NAND&n=PM2129)
 
 ### WiFi
 Realtek RTL8189ETV] SoC, with 2 wifi interfaces and 2.4/5 GHz bands support.
 ![RTL8189ETV](RTL8189ETV.jpg)
 * [Datasheet](Wifi-Soc-RTL8189ETV-datasheet.pdf)
+* [Official site](https://www.realtek.com/en/products/communications-network-ics/item/rtl8189etv)
 
 ### Microcontroller
 GD32F103VCT6 ARM Cortex-M3 microcontroller, similar to STM32 family.
