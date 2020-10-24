@@ -48,4 +48,4 @@ PC:~ armando$ adb shell
 
 and you'll get a root-console session directly (without typing any password)
 
-![Tina-Linux](tina-linux.png)
+![Tina-Linux](tina-linux-passwordless.png)
