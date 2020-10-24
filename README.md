@@ -6,7 +6,7 @@ Take a look at the different sections:
 
 * [Documents](docs): info, guides, little scripts...
 * [Code](src): main code (work in progress 😅)
-* [Others](others): anything that doesn't quite fit in the previous two
+* [Others](other): anything that doesn't quite fit in the previous two
 
 You can also visit our [web page](https://freecon.ga) (with cool memes!).
 
