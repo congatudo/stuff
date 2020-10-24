@@ -1,12 +1,14 @@
 # Documents
 
-Here should go all kind of documents relevant to the project
+Here you'll find all kind of documents relevant to the project
 
-## Software
+## Software related
 * [Rooting the Conga 3x90](rooting-conga-3x90.md)
-* [Capturing network package](capture-network-packets.md)
+* [ADB without password](adb-without-password.md)
+* [Capturing network traffic](capture-network-packets.md)
+* [List of commands](robot-commands-list.md)
 
-## Hardware
+## Hardware related
 
 ### WiFi
 
