@@ -55,7 +55,7 @@ A Conga 3x90 model (of course!) and
 ### Finally
 You should see something like this:
 
-![Tina-Linux](tina-linux.png)
+![Tina-Linux](./assets/tina-linux.png)
 
 ## Things that you can do now
 

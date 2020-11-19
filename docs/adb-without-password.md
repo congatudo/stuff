@@ -31,7 +31,7 @@ PC:~ armando$ chmod 755 adb_shell
 Connect your Conga to your PC using the micro-usb conector in the front (the one bellow the rubber-tap):
 
 
-![frontal usb port](frontal-usb-port.jpg)
+![frontal usb port](./assets/frontal-usb-port.jpg)
 
 and execute the following commands:
 
@@ -49,7 +49,7 @@ PC:~ armando$ adb shell
 
 and you'll get a root-console session directly (without typing any password)
 
-![Tina-Linux](tina-linux-passwordless.png)
+![Tina-Linux](./assets/tina-linux-passwordless.png)
 
 ## Notes:
 [^1]: Original adb shell script <code>/bin/adb_shell</code>:
