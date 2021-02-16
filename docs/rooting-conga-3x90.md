@@ -31,7 +31,12 @@ A Conga 3x90 model (of course!) and
 	PC:~ armando$ adb shell
 	```
 
-	if you get a login prompt, type <code>root</code> and then the password <code>@3I#sc$RD%xm^2S&</code>[^1]
+	if you get a login prompt, type <code>root</code> as user
+
+	password may vary based on your model,
+
+	 - for 3090: <code>3irobotics</code>[^1]
+	 - for 3X90: <code>@3I#sc$RD%xm^2S&</code>[^2]
 
 	if you already [patched your Conga](adb-without-password.md) before, no login or password is required
 
@@ -55,7 +60,7 @@ A Conga 3x90 model (of course!) and
 ### Finally
 You should see something like this:
 
-![Tina-Linux](tina-linux.png)
+![Tina-Linux](./assets/tina-linux.png)
 
 ## Things that you can do now
 
@@ -66,4 +71,5 @@ You should see something like this:
 
 
 ## Notes:
-[^1]: Original password hash &rarr; <code>$1$trVg0hig$L.xDOM91z4d/.8FZRnr.h1</code> == <code>@3I#sc$RD%xm^2S&</code>
+[^1]: Model 3090 original password hash &rarr; <code>$1$ZnE1NgOT$oWafIj8xgsknzdJmRZM9N/</code> == <code>3irobotics</code>
+[^2]: Model 3X90 original password hash &rarr; <code>$1$trVg0hig$L.xDOM91z4d/.8FZRnr.h1</code> == <code>@3I#sc$RD%xm^2S&</code>
