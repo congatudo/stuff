@@ -36,10 +36,11 @@ A Conga 3x90 or 4090 model (of course!) and
 
 	if you get a login prompt, type <code>root</code> as user
 
-	password may vary based on your model:
+	password may vary depending on your model:
 
 	 - for 3090: <code>3irobotics</code>[^1]
 	 - for 3x90 & 4090: <code>@3I#sc$RD%xm^2S&</code>[^2]
+
 
 	if you already [patched your Conga](adb-without-password.md) before, no login or password is required
 
@@ -57,7 +58,7 @@ A Conga 3x90 or 4090 model (of course!) and
 	PC:~ armando$ ssh root@192.168.x.x
 	```
 
-	and when you get the login prompt, type <code>root</code> and then the password based on your model:
+	and when you get the login prompt, type <code>root</code> and then the password depending on your model:
 
 	 - for 3090: <code>3irobotics</code>[^1]
 	 - for 3x90 & 4090: <code>@3I#sc$RD%xm^2S&</code>[^2]
