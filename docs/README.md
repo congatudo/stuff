@@ -3,10 +3,11 @@
 Here you'll find all kind of documents relevant to the project
 
 ## Software related
-* [Rooting the Conga 3x90](rooting-conga-3x90.md)
+* [Rooting the Conga](rooting-conga.md)
 * [ADB without password](adb-without-password.md)
 * [Capturing network traffic](capture-network-packets.md)
 * [List of commands](robot-commands-list.md)
+* [SSH access with certificates (key-pair)](ssh-with-certificate.md)
 
 ## Hardware related
 

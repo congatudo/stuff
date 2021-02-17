@@ -1,11 +1,11 @@
 # ADB shell without password
 
-For the  **Cecotec Conga models 3290, 3390, 3490, 3590, 3690 & 3790** it's
+For the  **Cecotec Conga models 3090, 3290, 3390, 3490, 3590, 3690, 3790 & 4090** it's
 possible to change the original adb shell login script[^1] to avoid any password request at all.
 
 ## Requirements
 
-* a Conga 3x90 model (of course!)
+* a Conga 3x90 or 4090 model (of course!)
 * a USB to microUSB cable
 * a computer with ADB installed ([guide](https://www.xda-developers.com/install-adb-windows-macos-linux/))
 
