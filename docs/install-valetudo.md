@@ -111,9 +111,10 @@ shutdown() {
 ```
 ### 8. Edit hosts file in conga to point to valetudo server and reboot
 ```
-$ ssh root@<conga ip>
-# echo "<your pc ip> cecotec.das.3irobotix.net cecotec.download.3irobotix.net cecotec.log.3irobotix.net cecotec.ota.3irobotix.net eu.das.3irobotics.net eu.log.3irobotics.net eu.ota.3irobotics.net" >> /etc/hosts
-#reboot
+$> ssh root@<conga ip>
+$> echo "<your pc ip> cecotec.das.3irobotix.net cecotec.download.3irobotix.net cecotec.log.3irobotix.net cecotec.ota.3irobotix.net eu.das.3irobotics.net eu.log.3irobotics.net eu.ota.3irobotics.net" >> /etc/hosts
+$> /etc/init.d/valetudo enable
+$> reboot
 ```
 
 ### 9. Check if webserver up and running
