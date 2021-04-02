@@ -70,9 +70,11 @@ If you would like to integrate Valetudo with Home Assistant, you could edit thes
   ...
 },
 ```
-### 5. After that, you can build the binary file:
+### 5. After that, you can build the binary file, as a root user:
 ```
-npm build
+sudo su -
+cd <path-to-Valetudo folder>
+npm run build
 ```
 
 ### 6. You should copy now the new valetudo binary file generated and the config file to a rooted conga
