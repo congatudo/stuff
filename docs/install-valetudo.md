@@ -79,7 +79,7 @@ npm run build
 
 ### 6. You should copy now the new valetudo binary file generated and the config file to a rooted conga
 ```
-scp valetudo root@<your pc ip>:<path>  #In conga 3090 this path could be /mnt/UDISK/ or similar directory you created i.e. mkdir /mnt/UDISK/valetudo
+scp ./build/armv7/valetudo root@<your pc ip>:<path>  #In conga 3090 this path could be /mnt/UDISK/ or similar directory you created i.e. mkdir /mnt/UDISK/valetudo
 scp /tmp/valetudo_config.json root@<your pc ip>:<path>  #In conga 3090 this path could be /mnt/UDISK/ or similar directory you created i.e. mkdir /mnt/UDISK/valetudo
 ```
 ### 7. Create a script file to export the enviroment variable and run the server at boot
