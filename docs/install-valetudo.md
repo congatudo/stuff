@@ -39,7 +39,7 @@ On first launch, Valetudo will generate a default config file as `/tmp/valetudo_
 {
   ...
   "robot": {
-    "implementation": "CecotecCongaXXXX",
+    "implementation": "CecotecCongaRobot",
     "implementationSpecificConfig": {
       "ip": "127.0.0.1"
     }
