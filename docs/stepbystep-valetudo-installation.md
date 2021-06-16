@@ -127,10 +127,16 @@ Wait some seconds till the Conga startup again (a beep will sound) and you shoul
 
 
 ## FAQ
-Q: I get a `missing script` in the logs
-A: Make sure you build the solution from the backend folder
+**Q:** I get a `missing script` in the logs
 
-Q: I get some error in the npm build command
+``` text
+A: Make sure you build the solution from the backend folder
+```
+
+**Q:** I get some error in the npm build command
+
+``` text
 A: Make sure the version you are running. 
-- npm >= v7
-- node >= v16
+· npm >= v7
+· node >= v16
+```
