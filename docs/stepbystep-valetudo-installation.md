@@ -3,6 +3,19 @@
 This guide pretends to get Valetudo server inide you conga using [this](https://github.com/adrigzr/Valetudo) Fork on github.
 We are going to learn how to build the project and deploy it in the robot. We are not going to flash a new firmware.
 
+## Sumary
+1. [Requirements](#Requirements)
+2. [Install from a Windows 10](#Install%20from%20a%20Windows%2010)
+    - [Node installation](#Node%20installation)
+    - [Get Valetudo](#Get%20Valetudo)
+    - [Installing dependencies](#Installing%20dependencies)
+    - [Run Valetudo for the first time](#Run%20Valetudo%20for%20the%20first%20time)
+    - [Editing configuration file](#Editing%20configuration%20file)
+    - [Run Valetudo in Windows (optional)](#Run%20Valetudo%20in%20Windows%20(optional))
+    - [Build the server](#Build%20the%20server)
+    - [Deploy Valetudo](#Deploy%20Valetudo)
+4. [FAQ](#FAQ)
+
 ## Requirements
 - A conga already connected to a wifi network
 - Node (>v16) and npm(>v7) installed
@@ -111,3 +124,13 @@ $> /etc/init.d/valetudo enable
 $> reboot
 ```
 Wait some seconds till the Conga startup again (a beep will sound) and you should have Valetudo running on your robot, navigate to [yourcongaip](http://youcongaip) :tada:
+
+
+## FAQ
+Q: I get a `missing script` in the logs
+A: Make sure you build the solution from the backend folder
+
+Q: I get some error in the npm build command
+A: Make sure the version you are running. 
+- npm >= v7
+- node >= v16
