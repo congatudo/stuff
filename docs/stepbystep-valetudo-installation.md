@@ -127,6 +127,12 @@ Wait some seconds till the Conga startup again (a beep will sound) and you shoul
 
 
 ## FAQ
+
+**Q:** Can I come back to the factory behaviour of the robot?
+
+``` text
+A: Yes, as easy as remove the line you added in /etc/hosts file
+```
 **Q:** I get a `missing script` in the logs
 
 ``` text
