@@ -8,6 +8,7 @@ There are two ways of using Valetudo in your Conga:
 
 1. Standalone. This will install and run Valetudo directly on your Conga.
 2. Local Development Setup.
+3. Dockerize.
 
 ## Prerequisites
 
@@ -19,17 +20,18 @@ This procedure is still experimental
 ### 1. Install
 - [`git`](https://git-scm.com/)
 - [`npm`](https://www.npmjs.com/)
-### 2. Clone a valid Valetudo repo
+### 2. Clone a valid Valetudo repo on your local machine
 ```
 $ git clone https://github.com/adrigzr/Valetudo
 ```
-### 3. Install dependencies
+### 3. Install dependencies on your local machine
 ```
 $ cd Valetudo
 $ npm install
 ```
-### 4. Create default configuration by running valetudo
+### 4. Create default configuration by running Valetudo on your local machine
 ```
+$ cd backend
 $ npm run start
 CTRL + C
 ```
@@ -70,21 +72,20 @@ If you would like to integrate Valetudo with Home Assistant, you could edit thes
   ...
 },
 ```
-### 5. After that, you can build the binary file, as a root user:
+### 5. After that, you can build the binary file on your local machine
 ```
-sudo su -
-cd <path-to-Valetudo folder>
-npm run build
+$ cd backend
+$ npm run build
 ```
 
-### 6. You should copy now the new valetudo binary file generated and the config file to a rooted conga
+### 6. You should copy now the new Valetudo binary file generated and the config file on your local machine to a rooted conga
 ```
 scp ./build/armv7/valetudo root@<your pc ip>:<path>  #In conga 3090 this path could be /mnt/UDISK/ or similar directory you created i.e. mkdir /mnt/UDISK/valetudo
 scp /tmp/valetudo_config.json root@<your pc ip>:<path>  #In conga 3090 this path could be /mnt/UDISK/ or similar directory you created i.e. mkdir /mnt/UDISK/valetudo
 ```
-### 7. Create a script file to export the enviroment variable and run the server at boot
+### 7. Create a script file to export the enviroment variable and run the server at boot in your robot
 ```
-ssh root@<your pc ip>
+ssh root@<your conga ip>
 vi /etc/init.d/valetudo
 ```
 
@@ -111,15 +112,15 @@ shutdown() {
   echo shutdown                                                                                                   
 }
 ```
-### 8. Edit hosts file in conga to point to valetudo server and reboot
+### 8. Edit hosts file in your conga robot to point to Valetudo server and reboot
 ```
 $> ssh root@<conga ip>
-$> echo "<your pc ip> cecotec.das.3irobotix.net cecotec.download.3irobotix.net cecotec.log.3irobotix.net cecotec.ota.3irobotix.net eu.das.3irobotics.net eu.log.3irobotics.net eu.ota.3irobotics.net" >> /etc/hosts
+$> echo "<your home assistant ip> cecotec.das.3irobotix.net cecotec.download.3irobotix.net cecotec.log.3irobotix.net cecotec.ota.3irobotix.net eu.das.3irobotics.net eu.log.3irobotics.net eu.ota.3irobotics.net cecotec-das.3irobotix.net cecotec-log.3irobotix.net cecotec-upgrade.3irobotix.net cecotec-download.3irobotix.net" >> /etc/hosts
 $> /etc/init.d/valetudo enable
 $> reboot
 ```
 
-### 9. Check if webserver up and running
+### 9. Check if webserver is up and running in your robot
 If you have your development server running you can access Valetudo WebServer in http://<ip conga>
 
 ### 10. Tips to add the integration into Home Assistant
@@ -155,24 +156,21 @@ $ npm install
 ### 4. Create default configuration by running valetudo
 
 ```
+$ cd backend
 $ npm run start
 CTRL + C
 ```
 
-On first launch, Valetudo will generate a default config file as `local/config.json`. Simply stop Valetudo using `CTRL + C` and edit the newly created file. Change the following lines:
-
+On first launch, Valetudo will generate a default config file as `/tmp/valetudo_config.json`. Simply stop Valetudo using `CTRL + C` and edit the newly created file. Change the following lines:
 ```
 {
   ...
-  "logLevel": "debug",
-  "webserver": {
-    "port": 8080
-  },
-  "model": {
-    "type": "cecotec.conga.3490",
-    "embedded": false
-  },
-  ...
+  "robot": {
+    "implementation": "CecotecCongaRobot",
+    "implementationSpecificConfig": {
+      "ip": "127.0.0.1"
+    }
+    ...
 }
 ```
 
@@ -192,7 +190,7 @@ Access your Conga and change the host file:
 
 ```
 $ ssh root@<conga ip>
-# echo "<your pc ip> cecotec.das.3irobotix.net cecotec.download.3irobotix.net cecotec.log.3irobotix.net cecotec.ota.3irobotix.net eu.das.3irobotics.net eu.log.3irobotics.net eu.ota.3irobotics.net" >> /etc/hosts
+# echo "<your home assistant ip> cecotec.das.3irobotix.net cecotec.download.3irobotix.net cecotec.log.3irobotix.net cecotec.ota.3irobotix.net eu.das.3irobotics.net eu.log.3irobotics.net eu.ota.3irobotics.net cecotec-das.3irobotix.net cecotec-log.3irobotix.net cecotec-upgrade.3irobotix.net cecotec-download.3irobotix.net" >> /etc/hosts
 # reboot
 ```
 
@@ -202,6 +200,30 @@ Note: To temporarily revert this while needing to use the Conga App, you can com
 
 If you have your development server running you can access Valetudo WebServer in [http://localhost:8080](http://localhost:8080) or using your computer local network ip address.
 
+
+## Dockerize
+### Use the dockerhub image
+Firstly, get a valid valetudo config file in https://github.com/Hypfer/Valetudo/blob/<release>/backend/lib/res/default_config.json?raw=true
+At editing time, the newest release is 2021.08.0
+Then, you are able to just run the dockerhub image
+```
+sudo docker run --name valetudo -p 8081:8081 -p 4010:4010 -p 4030:4030 -p 4050:4050 -v $(pwd)/valetudo.json:/etc/valetudo/config.json -v valetudo_data:/data --name valetudo adrigzr/valetudo-conga:alpine-latest
+```
+
+
+## FAQ
+
+1. I have Valetudo up and running but any robot is found
+```
+Check if hosts file in the robot is already edited.
+Ping to a one of the cecotec cloud server instances to check if it reaches the conga ip, i.e.:
+ping cecotec.das.3irobotix.net
+```
+
+2. I try to run a dockerize Valetudo server in my Raspberry server with Raspbian, but I got an error
+```
+Check this: https://www.gitmemory.com/issue/Koenkk/zigbee2mqtt/7662/852985841
+```
 ## Sources
 
 - [Building and Modifying Valetudo](https://valetudo.cloud/pages/development/building-and-modifying-valetudo.html)
