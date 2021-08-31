@@ -203,7 +203,7 @@ If you have your development server running you can access Valetudo WebServer in
 
 ## Dockerize
 ### Use the dockerhub image
-Firstly, get a valid valetudo config file in https://github.com/Hypfer/Valetudo/blob/<release>/backend/lib/res/default_config.json?raw=true
+Firstly, get a valid valetudo config file in https://github.com/Hypfer/Valetudo/blob/\<release\>/backend/lib/res/default_config.json?raw=true
 At editing time, the newest release is 2021.08.0
 Then, you are able to just run the dockerhub image
 ```
