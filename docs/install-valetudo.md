@@ -4,6 +4,11 @@
 
 There is no official support for Congas in Valetudo ecosystem. The following guide is highly experimental and unstable.
 
+This installation is intended to work on Cecotec Conga robots. The series was already tested are:
+- 3XXX
+- 4XXX (except since 4690 due to it is using a new SSL encrypted protocol)
+- 5090 and 5490
+
 There are two ways of using Valetudo in your Conga:
 
 1. Standalone. This will install and run Valetudo directly on your Conga.
