@@ -4,6 +4,11 @@
 
 There is no official support for Congas in Valetudo ecosystem. The following guide is highly experimental and unstable.
 
+This installation is intended to work on Cecotec Conga robots. The series was already tested are:
+- 3XXX
+- 4XXX (except since 4690 due to it is using a new SSL encrypted protocol)
+- 5090 and 5490
+
 There are two ways of using Valetudo in your Conga:
 
 1. Standalone. This will install and run Valetudo directly on your Conga.
@@ -28,6 +33,9 @@ $ git clone https://github.com/adrigzr/Valetudo
 ```
 $ cd Valetudo
 $ npm install
+$ npm ci
+$ npm run build_openapi_schema
+$ npm run build --workspace=frontend
 ```
 ### 4. Create default configuration by running Valetudo on your local machine
 ```
@@ -123,16 +131,6 @@ $> reboot
 ### 9. Check if webserver is up and running in your robot
 If you have your development server running you can access Valetudo WebServer in http://<ip conga>
 
-### 10. Tips to add the integration into Home Assistant
-- In Home Assistant (from now HA) configuration file:
-```
-mqtt:
-  discovery: true
-  discovery_prefix: homeassistant
-```
-- In order to get the map card, you can add [this](https://github.com/TheLastProject/lovelace-valetudo-map-card) addon with HACS.
-For more info visit the valetudo official docs at https://valetudo.cloud/pages/integrations/home-assistant-integration.html
-
 ## Local Development Setup
 
 ### 1. Install prerequisites
@@ -151,6 +149,9 @@ $ git clone https://github.com/adrigzr/Valetudo
 ```
 $ cd Valetudo
 $ npm install
+$ npm ci
+$ npm run build_openapi_schema
+$ npm run build --workspace=frontend
 ```
 
 ### 4. Create default configuration by running valetudo
@@ -224,6 +225,19 @@ ping cecotec.das.3irobotix.net
 ```
 Check this: https://www.gitmemory.com/issue/Koenkk/zigbee2mqtt/7662/852985841
 ```
+
+3. Integrate it in Home Assistant
+- If you have a Home Assistant instance, you may try the [valetudo addon](https://github.com/txitxo0/valetudo-addon)
+- If you preffer to stay with a standalone installation:
+  - Prerrequesite: Having a mqtt server already integrated in HA.
+  - In Home Assistant configuration file:
+    ```
+    mqtt:
+      discovery: true
+      discovery_prefix: homeassistant
+    ```
+  - In order to get the map card, you can add [this](https://github.com/TheLastProject/lovelace-valetudo-map-card) addon with HACS.
+For more info visit the valetudo official docs at https://valetudo.cloud/pages/integrations/home-assistant-integration.html
 ## Sources
 
 - [Building and Modifying Valetudo](https://valetudo.cloud/pages/development/building-and-modifying-valetudo.html)
