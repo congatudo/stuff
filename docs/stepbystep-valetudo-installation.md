@@ -89,9 +89,10 @@ $> exit
 ```
 Save both files (binary and configuration) in an empty folder. Open this folder from powershell (by clicking shift+right mouse button, under an option in the menu).
 ```bash
-$> cd /path/to/the/fólder/with/valetudo/and/configuration
+$> cd /path/to/the/folder/with/valetudo/and/configuration
 $> scp -r . root@192.168.X.Y:/mnt/UDISK/valetudo
 $> ssh root@192.168.X.Y
+$> chmod 755 /mnt/UDISK/valetudo/valetudo
 $> vi /etc/init.d/valetudo
 ```
 Press 'i' in the keyboard and paste (right click) this script
