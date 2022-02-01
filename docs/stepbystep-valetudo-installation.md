@@ -1,149 +1,203 @@
-﻿
-# Step by step guideline for Windows users
-This guide pretends to get Valetudo server inide you conga using [this](https://github.com/adrigzr/Valetudo) Fork on github.
-We are going to learn how to build the project and deploy it in the robot. We are not going to flash a new firmware.
+---
+Brand: Cecotec
+Serie: Cecotec
+Models tested and supported: 3XXX, 4XXX (except for 4690), 5090 and 5490
+category: Installation
+---
+# 
 
-## Sumary
-1. [Requirements](#Requirements)
-2. [Install from a Windows 10](#Install%20from%20a%20Windows%2010)
-    - [Node installation](#Node%20installation)
-    - [Get Valetudo](#Get%20Valetudo)
-    - [Installing dependencies](#Installing%20dependencies)
-    - [Run Valetudo for the first time](#Run%20Valetudo%20for%20the%20first%20time)
-    - [Editing configuration file](#Editing%20configuration%20file)
-    - [Run Valetudo in Windows (optional)](#Run%20Valetudo%20in%20Windows%20(optional))
-    - [Build the server](#Build%20the%20server)
-    - [Deploy Valetudo](#Deploy%20Valetudo)
-4. [FAQ](#FAQ)
+These pages guide you through the installation steps for Cecotec Conga robots.
+Support is still somewhat experimental, everything in this guide is under your responsability.
 
-## Requirements
-- A conga already connected to a wifi network
-- Node (>v16) and npm(>v7) installed
-- Get access to your conga via ssh or adb
-- All the steps are going to happen from a windows PC
+- The default settings here will be for running Valetudo on the robot itself, [standalone installation](#standalane-installation).
+- It could run in a server using Docker, [docker installation](#docker-installation).
+- If you want to develop as well, check out the [Local Development guide](https://valetudo.cloud/pages/development/building-and-modifying-valetudo.html).
 
-## Install from a Windows 10
-### Node installation
-Install Node from the current version tab following the official web, getting the msi executable from [here](https://nodejs.org/en/download/current/).
+Any of the ways to get Valetudo running for the robot needs root access to your Conga, so here it will be explained too [Robot Setup](#robot-setup).
 
-### Get Valetudo
-From github you can [clone](https://github.com/adrigzr/Valetudo.git) the repo or just download a [zip file](https://github.com/adrigzr/Valetudo/archive/refs/heads/feature-conga.zip) and uncompress it somewhere.
+Please give it a try and [file any issues that you encounter there](https://github.com/Hypfer/Valetudo.git/issues).
 
-### Installing dependencies
-Go to the root path of the folder you already uncompressed or clone the project. We need to go to this path in a powershell window, so clicking in an empty space of the window with right button and shift key at the same time, you'll be prompto for an option menu where you can choice the option "Open Powershell window here", you are able to open a powershell window in the same path.
-In here, firstly be sure you have installed node and npm with correct versions (node >=v16 and npm >=v7)
-```bash
-$> node -v
-$> npm -v
+- [Summary](#)
+  - [Robot setup](#robot-setup)
+    - [Connect the robot to your local network](#connect-the-robot-to-your-local-network)
+    - [Get root access in your Conga](#get-root-access-in-your-conga)
+    - [Point your Conga robot to Valetudo Server](#point-your-conga-robot-to-valetudo-server)
+  - [Standalone installation](#standalone-installation)
+    - [Build a binary for you standalone installation](#build-a-binary-for-you-standalone-installation)
+    - [Prepare a valid configuration file](#prepare-a-valid-configuration-file)
+    - [Copy the binary and its configuration to your robot](#copy-the-binary-and-its-configuration-to-your-robot)
+    - [Create a script file to export the enviroment variable and run the server at boot in your robot](#create-a-script-file-to-export-the-enviroment-variable-and-run-the-server-at-boot-in-your-robot)
+    - [Enable Valetudo server at boot and reboot the robot](#enable-valetudo-server-at-boot-and-reboot-the-robot)
+    - [Finally](#finally)
+  - [Docker installation](#docker-installation)
+    - [Configuration file](#configuration-file)
+    - [Use the prepared image](#use-the-prepared-image)
+    - [Finally](#finally-1)
+  - [Home Assistant addon](#congatudo-addon)
+  - [Uninstall Valetudo](#uninstall-valetudo)
+  - [FAQ](#faq)
+  - [Notes:](#notes)
+
+## Robot setup
+It is needed for the robot to know wich server it has to attend so then, it should be connected to your local network and point it to the Valetudo server. This is the purpose of the following steps
+
+### Connect the robot to your local network
+First, you need to have your robot connected througth your wifi to get shell access. If you already have it, you can jumpthis section, otherwise, you can use the (agnoc tool)[https://github.com/adrigzr/agnoc] form your computer to establish the connection.
 ```
-After that, install dependencies running
-```bash
-$> npm install
+$ npm install -g @agnoc/cli 
+$ agnoc wlan <wifissid> <pass>
 ```
-You'll get some warnings, but no errors.
 
-### Run Valetudo for the first time
-This step is needed to get the very first version of our configuration file.
-```bash
-$> cd backend/
-$> npm run start
+### Get root access in your Conga
+1. Check that you have SSH installed and working in your computer (Linux/MacOS by default, use [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/) in Windows)
+2. You have to find out the IP address of your Conga (see [this guide](https://techwiser.com/find-ip-address-of-any-device/) on how to)
+3. Open an ssh connection to your Conga (change the 192.168.x.x for your Conga's IP address):
+	```bash
+	PC:~ $ ssh root@192.168.x.x
+	```
+
+	and when you get the login prompt, type `root` and then the password depending on your model:
+
+	 - for 3090: `3irobotics`[^1]
+	 - for 3x90, 4090 & 5490: `@3I#sc$RD%xm^2S&`[^2]
+4. You should see something like this:
+![Tina-Linux](../img/tina-linux.png)
+1. Now, it would be a good practice to:
+   - Change the password (to something non-default and secure 🙏)
+   - Add certificates (ssh key-pair) to [access via ssh without passwords](add-ssh-key.md)
+  
+### Point your Conga robot to Valetudo Server
+Open a ssh terminal to your robot and edit the hosts file, your server:
+*Server IP for standalone installation: 127.0.0.1*
 ```
-An error will prompt and Valetudo will exit, but it should generated a new configuratioin file under the path: `C:\Users\USER\AppData\Local\Temp\valetudo_config.json`
+$ ssh root@<conga ip>
+$> echo "<your server ip> cecotec.das.3irobotix.net cecotec.download.3irobotix.net cecotec.log.3irobotix.net cecotec.ota.3irobotix.net eu.das.3irobotics.net eu.log.3irobotics.net eu.ota.3irobotics.net cecotec-das.3irobotix.net cecotec-log.3irobotix.net cecotec-upgrade.3irobotix.net cecotec-download.3irobotix.net" >> /etc/hosts
+$> /etc/init.d/valetudo enable
+$> reboot
+```
+## Standalone installation
+### Build a binary for you standalone installation
+Compile Valetudo under the path ./build/armv7/valetudo
+```
+$ git clone https://github.com/Hypfer/Valetudo.git
+$ cd Valetudo
+$ npm install
+$ npm ci
+$ npm run build_openapi_schema # to get access to a swagger api
+$ npm run build --workspace=frontend # to get access to the under development new fronted 
+$ cd backend
+$ npm run build
+```
+### Prepare a valid configuration file
+In your machine, get a valid valetudo config file in from: https://github.com/Hypfer/Valetudo/blob/\<release\>/backend/lib/res/default_config.json?raw=true
 
-### Editing configuration file
-Copy this `C:\Users\USER\AppData\Local\Temp\valetudo_config.json` file into a saved folder and open it with some editing tool (visual studio code, notepad++, sublime, notepad, etc...). This json file has multiple options. edit the implementation to `CecotecCongaRobot`
-```json
-...
-"robot": {
-"implementation": "CecotecCongaRobot",
-"implementationSpecificConfig": {
-"ip": "127.0.0.1"
+*At editing time, the newest release is [2021.08.1](https://github.com/Hypfer/Valetudo/blob/2021.08.1/backend/lib/res/default_config.json?raw=true)*
+
+Once you have already downloaded IT, edit the implementation of the valetudo robot to CecotecCongaRobot:
+```
+{
+  ...
+  "robot": {
+    "implementation": "CecotecCongaRobot",
+    "implementationSpecificConfig": {
+      "ip": "127.0.0.1"
+    }
+    ...
 }
-...
 ```
 
-#### Run Valetudo in Windows (optional)
-If you would like to run Valetudo in Windows locally, easy, just create an environment variable pointing to the valetudo config file path, and run again:
-```bash
-$> $env:VALETUDO_CONFIG_PATH="C:\path\to\valetudo\config\json\file"
-$> cd backend
-$> npm run start
+### Copy the binary and its configuration to your robot
+After that, you are able to copy the binary to your conga
 ```
-Navigate to your localhost [localhost](http://localhost/) and you will be able to see Valetudo running (with no one Conga connected yet). To exit, just CTRL+C in the powershell session.
-
-### Build the server
-After that, we can build the program to get the binary(program) who is gonna run in the conga robot.
-```bash
-$> cd backend/
-$> npm run build
-$> cd ../build/armv7
-```
-There you'll find a file named "valetudo" . This is your kind binary. It is time to deploy both files (binary and configuration) to the conga.
-
-### Deploy Valetudo
-Firstly, try to access your conga via ssh with Powershell, you can check [here](https://gitlab.com/freeconga/stuff/-/blob/master/docs/rooting-conga.md) to understand how to overpass the password or (even better) update it. You can check your conga IP by looking in your router.
-```bash
-$> ssh root@192.168.X.Y
+$ ssh root@<robot-ip>
 $> mkdir /mnt/UDISK/valetudo
 $> exit
+$ scp ./build/armv7/valetudo root@<your robot ip>:</mnt/UDISK/valetudo>
+$ scp ./build/armv7/valetudo root@<your robot ip>:</mnt/UDISK/valetudo_config.json>
 ```
-Save both files (binary and configuration) in an empty folder. Open this folder from powershell (by clicking shift+right mouse button, under an option in the menu).
-```bash
-$> cd /path/to/the/folder/with/valetudo/and/configuration
-$> scp -r . root@192.168.X.Y:/mnt/UDISK/valetudo
-$> ssh root@192.168.X.Y
-$> chmod 755 /mnt/UDISK/valetudo/valetudo
+### Create a script file to export the enviroment variable and run the server at boot in your robot
+```
+ssh root@<your conga ip>
 $> vi /etc/init.d/valetudo
 ```
-Press 'i' in the keyboard and paste (right click) this script
-```bash
-#!/bin/sh /etc/rc.common
+
+add this script:
+```
+#!/bin/sh /etc/rc.common                                                                                                    
 # File: /etc/init.d/valetudo
 # Usage help: /etc/init.d/valetudo
 # Example: /etc/init.d/valetudo start
 START=85
-STOP=99
-USE_PROCD=1
+STOP=99                                     
+USE_PROCD=1                                                                                                                
 PROG=/mnt/UDISK/valetudo/valetudo
-CONFIG=/mnt/UDISK/valetudo/valetudo_config.json
-start_service() {
-procd_open_instance
-procd_set_param env VALETUDO_CONFIG_PATH=$CONFIG
-procd_set_param command $PROG
+CONFIG=/mnt/UDISK/valetudo/valetudo_config.json                                     
+start_service() {                     
+  procd_open_instance                 
+  procd_set_param env VALETUDO_CONFIG_PATH=$CONFIG
+  procd_set_param command $PROG    
 
-procd_set_param respawn ${respawn_threshold:-3600} ${respawn_timeout:-10} ${respawn_retry:-5}
-procd_close_instance
-}
-shutdown() {
-echo shutdown
+  procd_set_param respawn ${respawn_threshold:-3600} ${respawn_timeout:-10} ${respawn_retry:-5}
+  procd_close_instance                
+}                                                                                                                          
+shutdown() {                                                                                                            
+  echo shutdown                                                                                                   
 }
 ```
-After this, press the ESC key and type ':wq' and enter to save the new file. Now, you are able to change the host Cecotec to your Valetudo server. Enable to run Valetudo at startup and reboot the device.
-```bash
-$> echo "127.0.0.1 cecotec.das.3irobotix.net cecotec.download.3irobotix.net cecotec.log.3irobotix.net cecotec.ota.3irobotix.net eu.das.3irobotics.net eu.log.3irobotics.net eu.ota.3irobotics.net" >> /etc/hosts
+
+### Enable Valetudo server at boot and reboot the robot
+```
+$ ssh root@<conga ip>
 $> /etc/init.d/valetudo enable
 $> reboot
 ```
-Wait some seconds till the Conga startup again (a beep will sound) and you should have Valetudo running on your robot, navigate to [yourcongaip](http://youcongaip) :tada:
+### Finally
+:tada: With theses steps, you may see your Valetudo server running under <http://ip-robot>
 
+## Docker installation
+### Configuration file
+Firstly, get a valid valetudo config file in https://github.com/Hypfer/Valetudo/blob/\<release\>/backend/lib/res/default_config.json?raw=true
+
+*At editing time, the newest release is [2021.08.1](https://github.com/Hypfer/Valetudo/blob/2021.08.1/backend/lib/res/default_config.json?raw=true)*
+### Use the prepared image
+Then, you are able to just run the dockerhub image
+```
+docker run -p 8080:8080 -p 4010:4010 -p 4030:4030 -p 4050:4050 -v $(pwd)/valetudo.json:/etc/valetudo/config.json --name valetudo adrigzr/valetudo-conga:alpine-latest
+```
+### Finally
+:tada: With theses steps, you may see your Valetudo server running under <http://ip-server:8080>
+
+## Home Assistant addon installation
+Just follow the [https://github.com/freeconga/congatudo-add-on](read me)
+
+## Uninstall Valetudo
+
+This will remove Valetudo, free the diskspace and re-enable the cloud interface.
+
+```shell
+ssh root@<robot ip>
+$> /etc/init.d/valetudo stop
+$> rm /etc/init.d/valetudo /mnt/UDISK/valetudo
+$> sed '/cecotec.das.3irobotix.net/d' /etc/hosts
+```
 
 ## FAQ
-
-**Q:** Can I come back to the factory behaviour of the robot?
-
-``` text
-A: Yes, as easy as remove the line you added in /etc/hosts file
+1. I have Valetudo up and running but any robot is found
 ```
-**Q:** I get a `missing script` in the logs
-
-``` text
-A: Make sure you build the solution from the backend folder
+Check if hosts file in the robot is already edited.
+Ping to a one of the cecotec cloud server instances to check if it reaches the conga ip, i.e.:
+ping cecotec.das.3irobotix.net
+```
+2. I try to run a dockerize Valetudo server in my Raspberry server with Raspbian, but I got an error
+```
+Check (this link)[https://www.gitmemory.com/issue/Koenkk/zigbee2mqtt/7662/852985841]
+```
+3. Valetudo doesn't save the map, it is always remapping and it didn't save my segments.
+```
+Check the notifications and accept the new map generated
 ```
 
-**Q:** I get some error in the npm build command
+## Notes
+[1]: Model 3090 original password hash `$1$ZnE1NgOT$oWafIj8xgsknzdJmRZM9N/` == `3irobotics`
 
-``` text
-A: Make sure the version you are running. 
-· npm >= v7
-· node >= v16
-```
+[2]: Model 3x90 original password hash `$1$trVg0hig$L.xDOM91z4d/.8FZRnr.h1` == `@3I#sc$RD%xm^2S&`
