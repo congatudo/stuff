@@ -89,19 +89,14 @@ $ cd backend
 $ npm run build
 ```
 ### Prepare a valid configuration file
-In your machine, get a valid valetudo config file in from: https://github.com/Hypfer/Valetudo/blob/\<release\>/backend/lib/res/default_config.json?raw=true
+In your machine, get a valid valetudo config file in from: https://raw.githubusercontent.com/freeconga/Valetudo/master/backend/lib/res/default_config.json
 
-*At editing time, the newest release is [2021.08.1](https://github.com/Hypfer/Valetudo/blob/2021.08.1/backend/lib/res/default_config.json?raw=true)*
-
-Once you have already downloaded IT, edit the implementation of the valetudo robot to CecotecCongaRobot:
+Once you have already downloaded it, edit the implementation of the Valetudo robot to CecotecCongaRobot:
 ```
 {
-  ...
+  "embedded": true,
   "robot": {
     "implementation": "CecotecCongaRobot",
-    "implementationSpecificConfig": {
-      "ip": "127.0.0.1"
-    }
     ...
 }
 ```
@@ -156,9 +151,23 @@ $> reboot
 
 ## Docker installation
 ### Configuration file
-Firstly, get a valid valetudo config file in https://github.com/Hypfer/Valetudo/blob/\<release\>/backend/lib/res/default_config.json?raw=true
+Firstly, get a valid valetudo config file in https://raw.githubusercontent.com/freeconga/Valetudo/master/backend/lib/res/default_config.json
 
-*At editing time, the newest release is [2021.08.1](https://github.com/Hypfer/Valetudo/blob/2021.08.1/backend/lib/res/default_config.json?raw=true)*
+Once you have already downloaded it, edit the implementation of the Valetudo robot to CecotecCongaRobot:
+```
+{
+  "embedded": false,
+  "robot": {
+    "implementation": "CecotecCongaRobot",
+    ...
+    },
+    "webserver": {
+      "port": 8080,
+      ...
+    }
+}
+```
+
 ### Use the prepared image
 Then, you are able to just run the dockerhub image
 ```
@@ -172,7 +181,7 @@ Just follow the [https://github.com/freeconga/congatudo-add-on](read me)
 
 ## Uninstall Valetudo
 
-This will remove Valetudo, free the diskspace and re-enable the cloud interface.
+This will remove Valetudo, free the diskspace and re-enable the cloud interface in case of a standalone installation.
 
 ```shell
 ssh root@<robot ip>
