@@ -1,7 +1,7 @@
 ---
 Brand: Cecotec
 Serie: Cecotec
-Models tested and supported: 3XXX, 4XXX (except for 4690), 5090 and 5490
+Models tested and supported: 3XXX (except for 3890), 4XXX (except for 4690), 5090 and 5490
 category: Installation
 ---
 # 
