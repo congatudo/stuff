@@ -9,7 +9,7 @@ category: Installation
 These pages guide you through the installation steps for Cecotec Conga robots.
 Support is still somewhat experimental, everything in this guide is under your responsability.
 
-- The default settings here will be for running Valetudo on the robot itself, [standalone installation](#standalane-installation).
+- The default settings here will be for running Valetudo on the robot itself, [standalone installation](#standalone-installation).
 - It could run in a server using Docker, [docker installation](#docker-installation).
 - If you want to develop as well, check out the [Local Development guide](https://valetudo.cloud/pages/development/building-and-modifying-valetudo.html).
 
