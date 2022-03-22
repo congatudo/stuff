@@ -33,7 +33,7 @@ Please give it a try and [file any issues that you encounter there](https://gith
     - [Configuration file](#configuration-file)
     - [Use the prepared image](#use-the-prepared-image)
     - [Finally](#finally-1)
-  - [Home Assistant addon](#congatudo-addon)
+  - [Home Assistant addon](#home-assistant-addon-installation)
   - [Uninstall Valetudo](#uninstall-valetudo)
   - [FAQ](#faq)
   - [Notes:](#notes)
