@@ -79,7 +79,7 @@ $> reboot
 ### Build a binary for you standalone installation
 Compile Valetudo under the path ./build/armv7/valetudo
 ```
-$ git clone https://github.com/Hypfer/Valetudo.git
+$ git clone https://github.com/freeconga/Valetudo.git
 $ cd Valetudo
 $ npm install
 $ npm ci
