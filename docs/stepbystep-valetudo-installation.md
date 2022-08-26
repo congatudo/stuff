@@ -108,7 +108,7 @@ $ ssh root@<robot-ip>
 $> mkdir /mnt/UDISK/valetudo
 $> exit
 $ scp ./build/armv7/valetudo root@<your robot ip>:</mnt/UDISK/valetudo>
-$ scp ./build/armv7/valetudo root@<your robot ip>:</mnt/UDISK/valetudo_config.json>
+$ scp ./default_config.json root@<your robot ip>:</mnt/UDISK/valetudo/valetudo_config.json>
 ```
 ### Create a script file to export the enviroment variable and run the server at boot in your robot
 ```
@@ -138,6 +138,11 @@ start_service() {
 shutdown() {                                                                                                            
   echo shutdown                                                                                                   
 }
+```
+
+Make the init file executable:
+```
+$> chmox +x /etc/init.d/valetudo 
 ```
 
 ### Enable Valetudo server at boot and reboot the robot
