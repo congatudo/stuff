@@ -74,48 +74,18 @@ If your conga looses its map every few days, a workaround could be to automate r
 
 ### Instructions
 
-#### 1. Write a script like this in `/mnt/UDISK/logmaps.sh`:
+#### 1. Copy the backup script to `/mnt/UDISK/logmaps.sh`:
 
-    #!/bin/ash
-    # $1: backup or restore
+The backup script is available in this repo [../other/logmaps.sh](../other/logmaps.sh). Download to your computer and then transfer to the conga:
 
+    user@yourcomputer:~# wget -O logmaps.sh https://raw.githubusercontent.com/freeconga/stuff/master/other/logmaps.sh
+    user@yourcomputer:~# scp logmaps.sh root@<congaip>:/mnt/UDISK/logmaps.sh
 
-    BACKUP_FOLDER=/mnt/UDISK/log_backup
-    RESTORE_FOLDER=/mnt/UDISK/log
+Now, you need to make it executable:
 
-    backup()
-    {
-      if [ ! -d "$BACKUP_FOLDER" ]; then
-        mkdir -p $BACKUP_FOLDER
-        echo "Created backup directory in $BACKUP_FOLDER"
-      fi
-      echo "Making maps backup to $BACKUP_FOLDER"
-      /bin/cp -R $RESTORE_FOLDER/* $BACKUP_FOLDER/
-      /bin/rm -rf $BACKUP_FOLDER/*.temp
-      /bin/rm -rf $BACKUP_FOLDER/*.txt.gz
-      /bin/rm -rf $BACKUP_FOLDER/*.log.gz
-      sleep 1
-    }
+    user@yourcomputer:~# ssh root@<congaip> 'chmod +x /mnt/UDISK/logmaps.sh'
 
-    restore()
-    {
-      echo "Restoring maps from $RESTORE_FOLDER"
-      /bin/cp -R  $BACKUP_FOLDER/* $RESTORE_FOLDER/
-      echo "Rebooting robot services"
-      /etc/init.d/robotManager stop
-      kill -9 "$(pidof Monitor RobotApp log-server everest-server AuxCtrl)"
-      /etc/init.d/robotManager start
-    }
-
-    if [ "$1" = "backup" ]; then
-      backup
-    elif [ "$1" = "restore" ]; then
-      restore
-    else
-      echo -e "Wrong syntaxis. Usage examples:\n    ./logmaps.sh backup\n    ./logmaps.sh restore\n"
-      exit 1
-    fi
-
+TIP: Remember to change `<congaip>` to your actual conga IP
 
 #### 2. Make your first backup
 
