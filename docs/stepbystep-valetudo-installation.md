@@ -79,7 +79,7 @@ $> reboot
 ### Build a binary for you standalone installation
 Compile Valetudo under the path ./build/armv7/valetudo
 ```
-$ git clone https://github.com/Hypfer/Valetudo.git
+$ git clone https://github.com/freeconga/Valetudo.git
 $ cd Valetudo
 $ npm install
 $ npm ci
@@ -107,8 +107,8 @@ After that, you are able to copy the binary to your conga
 $ ssh root@<robot-ip>
 $> mkdir /mnt/UDISK/valetudo
 $> exit
-$ scp ./build/armv7/valetudo root@<your robot ip>:</mnt/UDISK/valetudo>
-$ scp ./build/armv7/valetudo root@<your robot ip>:</mnt/UDISK/valetudo_config.json>
+$ scp ./build/armv7/valetudo root@<your robot ip>:</mnt/UDISK/valetudo/valetudo>
+$ scp ./default_config.json root@<your robot ip>:</mnt/UDISK/valetudo/valetudo_config.json>
 ```
 ### Create a script file to export the enviroment variable and run the server at boot in your robot
 ```
@@ -138,6 +138,11 @@ start_service() {
 shutdown() {                                                                                                            
   echo shutdown                                                                                                   
 }
+```
+
+Make the init file executable:
+```
+$> chmod +x /etc/init.d/valetudo
 ```
 
 ### Enable Valetudo server at boot and reboot the robot
