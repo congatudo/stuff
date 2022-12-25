@@ -1,4 +1,4 @@
-# freecon.ga
+# valetudo.cloud
 
 A place to free your Cecotec's Conga vacuum cleanning robot!
 
@@ -8,7 +8,7 @@ Take a look at the different sections:
 * [Code](src): main code (work in progress 😅)
 * [Others](other): anything that doesn't quite fit in the previous two
 
-You can also visit our [web page](https://freecon.ga) (with cool memes!).
+You can also visit our [web page](https://valetudo.cloud) (with cool memes!).
 
 ## LICENSE
 
