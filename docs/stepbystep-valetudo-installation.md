@@ -9,13 +9,13 @@ category: Installation
 These pages guide you through the installation steps for Cecotec Conga robots.
 Support is still somewhat experimental, everything in this guide is under your responsability.
 
-- The default settings here will be for running Valetudo on the robot itself, [standalone installation](#standalone-installation).
+- The default settings here will be for running Congatudo on the robot itself, [standalone installation](#standalone-installation).
 - It could run in a server using Docker, [docker installation](#docker-installation).
 - If you want to develop as well, check out the [Local Development guide](https://valetudo.cloud/pages/development/building-and-modifying-valetudo.html).
 
 Any of the ways to get Valetudo running for the robot needs root access to your Conga, so here it will be explained too [Robot Setup](#robot-setup).
 
-Please give it a try and [file any issues that you encounter there](https://github.com/Hypfer/Valetudo.git/issues).
+Please give it a try and [file any issues that you encounter there](https://github.com/congatudo/Congatudo.git/issues).
 
 - [Summary](#)
   - [Robot setup](#robot-setup)
@@ -39,10 +39,10 @@ Please give it a try and [file any issues that you encounter there](https://gith
   - [Notes:](#notes)
 
 ## Robot setup
-It is needed for the robot to know wich server it has to attend so then, it should be connected to your local network and point it to the Valetudo server. This is the purpose of the following steps
+It is needed for the robot to know wich server it has to attend so then, it should be connected to your local network and point it to the Congatudo server. This is the purpose of the following steps
 
 ### Connect the robot to your local network
-First, you need to have your robot connected througth your wifi to get shell access. If you already have it, you can jumpthis section, otherwise, you can use the (agnoc tool)[https://github.com/adrigzr/agnoc] form your computer to establish the connection.
+First, you need to have your robot connected througth your wifi to get shell access. If you already have it, you can jumpthis section, otherwise, you can use the (agnoc tool)[https://github.com/congatudo/agnoc] form your computer to establish the connection.
 ```
 $ npm install -g @agnoc/cli 
 $ agnoc wlan <wifissid> <pass>
@@ -77,10 +77,10 @@ $> reboot
 ```
 ## Standalone installation
 ### Build a binary for you standalone installation
-Compile Valetudo under the path ./build/armv7/valetudo
+Compile Congatudo under the path ./build/armv7/valetudo
 ```
-$ git clone https://github.com/freeconga/Valetudo.git
-$ cd Valetudo
+$ git clone https://github.com/congatudo/Congatudo.git
+$ cd Congatudo
 $ npm install
 $ npm ci
 $ npm run build_openapi_schema # to get access to a swagger api
@@ -89,9 +89,9 @@ $ cd backend
 $ npm run build
 ```
 ### Prepare a valid configuration file
-In your machine, get a valid valetudo config file in from: https://raw.githubusercontent.com/freeconga/Valetudo/master/backend/lib/res/default_config.json
+In your machine, get a valid valetudo config file in from: https://raw.githubusercontent.com/congatudo/Congatudo/master/backend/lib/res/default_config.json
 
-Once you have already downloaded it, edit the implementation of the Valetudo robot to CecotecCongaRobot:
+Once you have already downloaded it, edit the implementation of the Congatudo robot to CecotecCongaRobot:
 ```
 {
   "embedded": true,
@@ -145,7 +145,7 @@ Make the init file executable:
 $> chmod +x /etc/init.d/valetudo
 ```
 
-### Enable Valetudo server at boot and reboot the robot
+### Enable Congatudo server at boot and reboot the robot
 ```
 $ ssh root@<conga ip>
 $> /etc/init.d/valetudo enable
@@ -156,7 +156,7 @@ $> reboot
 
 ## Docker installation
 ### Configuration file
-Firstly, get a valid valetudo config file in https://raw.githubusercontent.com/freeconga/Valetudo/master/backend/lib/res/default_config.json
+Firstly, get a valid valetudo config file in https://raw.githubusercontent.com/congatudo/Congatudo/master/backend/lib/res/default_config.json
 
 Once you have already downloaded it, edit the implementation of the Valetudo robot to CecotecCongaRobot:
 ```
@@ -176,17 +176,17 @@ Once you have already downloaded it, edit the implementation of the Valetudo rob
 ### Use the prepared image
 Then, you are able to just run the dockerhub image
 ```
-docker run -p 8080:8080 -p 4010:4010 -p 4030:4030 -p 4050:4050 -v $(pwd)/valetudo.json:/etc/valetudo/config.json --name valetudo adrigzr/valetudo-conga:alpine-latest
+docker run -p 8080:8080 -p 4010:4010 -p 4030:4030 -p 4050:4050 -v $(pwd)/valetudo.json:/etc/valetudo/config.json --name congatudo congatudo/Congatudo:alpine-latest
 ```
 ### Finally
 :tada: With theses steps, you may see your Valetudo server running under <http://ip-server:8080>
 
 ## Home Assistant addon installation
-Just follow the [https://github.com/freeconga/congatudo-add-on](read me)
+Just follow the [https://github.com/congatudo/congatudo-add-on](read me)
 
-## Uninstall Valetudo
+## Uninstall Congatudo
 
-This will remove Valetudo, free the diskspace and re-enable the cloud interface in case of a standalone installation.
+This will remove Congatudo, free the diskspace and re-enable the cloud interface in case of a standalone installation.
 
 ```shell
 ssh root@<robot ip>
@@ -196,7 +196,7 @@ $> sed '/cecotec.das.3irobotix.net/d' /etc/hosts
 ```
 
 ## FAQ
-1. I have Valetudo up and running but any robot is found
+1. I have Congatudo up and running but any robot is found
 ```
 Check if hosts file in the robot is already edited.
 Ping to a one of the cecotec cloud server instances to check if it reaches the conga ip, i.e.:
