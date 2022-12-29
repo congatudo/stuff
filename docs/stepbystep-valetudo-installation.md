@@ -182,7 +182,7 @@ docker run -p 8080:8080 -p 4010:4010 -p 4030:4030 -p 4050:4050 -v $(pwd)/valetud
 :tada: With theses steps, you may see your Valetudo server running under <http://ip-server:8080>
 
 ## Home Assistant addon installation
-Just follow the [https://github.com/congatudo/congatudo-add-on](read me)
+Just follow the [https://github.com/congatudo/congatudo-add-on] (read me)
 
 ## Uninstall Congatudo
 
