@@ -17,7 +17,7 @@ There are two ways of using Valetudo in your Conga:
 
 ## Prerequisites
 
-You need to be able to [access your Conga by SSH](./rooting-conga-3x90.md).
+You need to be able to [access your Conga by SSH](https://github.com/congatudo/stuff/blob/master/docs/rooting-conga.md).
 
 ## Standalone
 
