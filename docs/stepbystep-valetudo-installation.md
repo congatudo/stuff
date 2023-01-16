@@ -42,7 +42,7 @@ Please give it a try and [file any issues that you encounter there](https://gith
 It is needed for the robot to know wich server it has to attend so then, it should be connected to your local network and point it to the Congatudo server. This is the purpose of the following steps
 
 ### Connect the robot to your local network
-First, you need to have your robot connected througth your wifi to get shell access. If you already have it, you can jumpthis section, otherwise, you can use the (agnoc tool)[https://github.com/congatudo/agnoc] form your computer to establish the connection.
+First, you need to have your robot connected througth your wifi to get shell access. If you already have it, you can jumpthis section, otherwise, you can use the [agnoc tool](https://github.com/congatudo/agnoc) form your computer to establish the connection.
 ```
 $ npm install -g @agnoc/cli 
 $ agnoc wlan <wifissid> <pass>
