@@ -208,7 +208,7 @@ Firstly, get a valid valetudo config file in https://github.com/Hypfer/Valetudo/
 At editing time, the newest release is 2022.12.0
 Then, you are able to just run the dockerhub image
 ```
-sudo docker run --name congatudo -p 8081:8081 -p 4010:4010 -p 4030:4030 -p 4050:4050 -v $(pwd)/valetudo.json:/etc/valetudo/config.json -v valetudo_data:/data congatudo/congatudo:alpine-latest
+sudo docker run --name congatudo -p 8081:8081 -p 4010:4010 -p 4030:4030 -p 4050:4050 -v $(pwd)/valetudo.json:/etc/valetudo/config.json -v valetudo_data:/data ghcr.io/congatudo/congatudo:alpine-latest
 ```
 
 
