@@ -176,13 +176,13 @@ Once you have already downloaded it, edit the implementation of the Valetudo rob
 ### Use the prepared image
 Then, you are able to just run the dockerhub image
 ```
-docker run -p 8080:8080 -p 4010:4010 -p 4030:4030 -p 4050:4050 -v $(pwd)/valetudo.json:/etc/valetudo/config.json --name congatudo congatudo/Congatudo:alpine-latest
+docker run -p 8080:8080 -p 4010:4010 -p 4030:4030 -p 4050:4050 -v $(pwd)/valetudo.json:/etc/valetudo/config.json --name congatudo ghcr.io/congatudo/Congatudo:alpine-latest
 ```
 ### Finally
 :tada: With theses steps, you may see your Valetudo server running under <http://ip-server:8080>
 
 ## Home Assistant addon installation
-Just follow the [https://github.com/congatudo/congatudo-add-on](read me)
+Just follow the [read me.](https://github.com/congatudo/congatudo-add-on)
 
 ## Uninstall Congatudo
 
@@ -204,7 +204,7 @@ ping cecotec.das.3irobotix.net
 ```
 2. I try to run a dockerize Valetudo server in my Raspberry server with Raspbian, but I got an error
 ```
-Check (this link)[https://www.gitmemory.com/issue/Koenkk/zigbee2mqtt/7662/852985841]
+Check https://github.com/Koenkk/zigbee2mqtt/issues/7662
 ```
 3. Valetudo doesn't save the map, it is always remapping and it didn't save my segments.
 ```
