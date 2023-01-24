@@ -1,10 +1,10 @@
-# Rooting the Cecotec Conga <br/> models 3090, 3290, 3390, 3490, 3590, 3690, 3790, 4090 & 5490
+# Rooting the Cecotec Conga <br/> models 3090, 3290, 3390, 3490, 3590, 3690, 3790, 4090, 5490 & 6090
 
 Good news for you: this particular model comes **already rooted from factory** (more or less). Here are the steps to get access to it and to make it permanent.
 
 ## Requirements
 
-A Conga, of course! (3x90, 4090 or 5490 model) and
+A Conga, of course! (3x90, 4090, 5490 or 6090 model) and
 
 **Method 1:** Via USB cable (recommended, easier):
 * a USB to microUSB cable
@@ -17,6 +17,7 @@ A Conga, of course! (3x90, 4090 or 5490 model) and
 	* [3090 Conga App](https://play.google.com/store/apps/details?id=es.cecotec.s3090v1) for 3090 model
 	* [3x90 Conga App](https://play.google.com/store/apps/details?id=es.cecotec.s3590) for 3x90 series
 	* [4000 Conga App](https://play.google.com/store/apps/details?id=es.cecotec.s4090) for 4090 model
+	* [6090 Conga App](https://play.google.com/store/apps/details?id=es.cecotec.s6090) for 6090 model
 
 ## Procedure
 
@@ -38,7 +39,7 @@ A Conga, of course! (3x90, 4090 or 5490 model) and
 
 	password may vary depending on your model:
 
-	 - for 3090: <code>3irobotics</code>[^1]
+	 - for 3090 and 6090: <code>3irobotics</code>[^1]
 	 - for 3x90, 4090 & 5490: <code>@3I#sc$RD%xm^2S&</code>[^2]
 	 
 
