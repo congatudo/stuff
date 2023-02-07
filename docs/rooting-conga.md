@@ -39,8 +39,8 @@ A Conga, of course! (3x90, 4090, 5490 or 6090 model) and
 
 	password may vary depending on your model:
 
-	 - for 3090 and 6090: <code>3irobotics</code>[^1]
-	 - for 3x90, 4090 & 5490: <code>@3I#sc$RD%xm^2S&</code>[^2]
+	 - for 3090: <code>3irobotics</code>[^1]
+	 - for 3x90, 4090 5490 & 6090: <code>@3I#sc$RD%xm^2S&</code>[^2]
 	 
 
 
@@ -63,7 +63,7 @@ A Conga, of course! (3x90, 4090, 5490 or 6090 model) and
 	and when you get the login prompt, type <code>root</code> and then the password depending on your model:
 
 	 - for 3090: <code>3irobotics</code>[^1]
-	 - for 3x90, 4090 & 5490: <code>@3I#sc$RD%xm^2S&</code>[^2]
+	 - for 3x90, 4090 5490 & 6090: <code>@3I#sc$RD%xm^2S&</code>[^2]
 
 
 ### Finally
