@@ -72,8 +72,6 @@ Open a ssh terminal to your robot and edit the hosts file, your server:
 ```
 $ ssh root@<conga ip>
 $> echo "<your server ip> cecotec.das.3irobotix.net cecotec.download.3irobotix.net cecotec.log.3irobotix.net cecotec.ota.3irobotix.net eu.das.3irobotics.net eu.log.3irobotics.net eu.ota.3irobotics.net cecotec-das.3irobotix.net cecotec-log.3irobotix.net cecotec-upgrade.3irobotix.net cecotec-download.3irobotix.net" >> /etc/hosts
-$> /etc/init.d/valetudo enable
-$> reboot
 ```
 ## Standalone installation
 ### Build a binary for you standalone installation
