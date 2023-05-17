@@ -145,7 +145,6 @@ $> chmod +x /etc/init.d/valetudo
 
 ### Enable Congatudo server at boot and reboot the robot
 ```
-$ ssh root@<conga ip>
 $> /etc/init.d/valetudo enable
 $> reboot
 ```
