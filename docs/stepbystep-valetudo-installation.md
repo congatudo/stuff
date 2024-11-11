@@ -88,7 +88,7 @@ $ cd backend
 $ npm run build
 ```
 ### Get the binary from the releases
-Go to congatudo releases page to download [valetudo-armv7](https://github.com/congatudo/Congatudo/releases)
+Go to congatudo releases page to download [valetudo-armv7](https://github.com/congatudo/Congatudo/releases) and named only 'valetudo'
 
 ### Prepare a valid configuration file
 In your machine, get a valid valetudo config file in from: https://raw.githubusercontent.com/congatudo/Congatudo/master/backend/lib/res/default_config.json
