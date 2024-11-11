@@ -115,35 +115,32 @@ $ scp ./default_config.json root@<your robot ip>:</mnt/UDISK/valetudo/valetudo_c
 ### Create a script file to export the enviroment variable and run the server at boot in your robot
 ```
 ssh root@<your conga ip>
-$> vi /etc/init.d/valetudo
-```
 
-add this script:
-```
-#!/bin/sh /etc/rc.common                                                                                                    
+$> cat << 'EOF' > "/etc/init.d/valetudo"
+#!/bin/sh /etc/rc.common
 # File: /etc/init.d/valetudo
 # Usage help: /etc/init.d/valetudo
 # Example: /etc/init.d/valetudo start
 START=85
-STOP=99                                     
-USE_PROCD=1                                                                                                                
+STOP=99
+USE_PROCD=1
 PROG=/mnt/UDISK/valetudo/valetudo
-CONFIG=/mnt/UDISK/valetudo/valetudo_config.json                                     
-start_service() {                     
-  procd_open_instance                 
+CONFIG=/mnt/UDISK/valetudo/valetudo_config.json
+start_service() {
+  procd_open_instance
   procd_set_param env VALETUDO_CONFIG_PATH=$CONFIG
-  procd_set_param command $PROG    
-
+  procd_set_param command $PROG
   procd_set_param respawn ${respawn_threshold:-3600} ${respawn_timeout:-10} ${respawn_retry:-5}
-  procd_close_instance                
-}                                                                                                                          
-shutdown() {                                                                                                            
-  echo shutdown                                                                                                   
+  procd_close_instance
 }
-```
+shutdown() {
+  echo shutdown
+}
+EOF
 
-Make the init file executable:
-```
+$> chmod +x "/etc/init.d/valetudo"
+
+# Make the init file executable:
 $> chmod +x /etc/init.d/valetudo
 ```
 
