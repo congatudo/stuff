@@ -23,7 +23,7 @@ Please give it a try and [file any issues that you encounter there](https://gith
     - [Get root access in your Conga](#get-root-access-in-your-conga)
     - [Point your Conga robot to Valetudo Server](#point-your-conga-robot-to-valetudo-server)
   - [Standalone installation](#standalone-installation)
-    - ~~[Build a binary for you standalone installation](#build-a-binary-for-you-standalone-installation)~~
+    - ~~[Build a binary for you standalone installation](#build-a-binary-for-you-standalone-installation-old-dated-optional-step)~~
     - [Get the binary from the releases](#get-the-binary-from-the-releases)
     - [Prepare a valid configuration file](#prepare-a-valid-configuration-file)
     - [Copy the binary and its configuration to your robot](#copy-the-binary-and-its-configuration-to-your-robot)
@@ -75,7 +75,7 @@ $ ssh root@<conga ip>
 $> echo "<your server ip> cecotec.das.3irobotix.net cecotec.download.3irobotix.net cecotec.log.3irobotix.net cecotec.ota.3irobotix.net eu.das.3irobotics.net eu.log.3irobotics.net eu.ota.3irobotics.net cecotec-das.3irobotix.net cecotec-log.3irobotix.net cecotec-upgrade.3irobotix.net cecotec-download.3irobotix.net" >> /etc/hosts
 ```
 ## Standalone installation
-### ~~Build a binary for you standalone installation (old dated, not necessary anymore)~~
+### ~~Build a binary for you standalone installation (old dated, optional step)~~
 ~~Compile Congatudo under the path ./build/armv7/valetudo~~
 ```
 $ git clone https://github.com/congatudo/Congatudo.git
